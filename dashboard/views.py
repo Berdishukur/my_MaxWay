@@ -14,8 +14,7 @@ def login_required_decorator(func):
 def logout_page(request):
     logout(request)
     return redirect("login_page")
-
-
+@login_required_decorator
 def login_page(request):
     if request.POST:
         username=request.POST.get('username')
@@ -24,6 +23,8 @@ def login_page(request):
         if user is not None:
             login(request, user)
             return redirect("home_page")
+    return render(request, 'login.html')
+@login_required_decorator
 def home_page(request):
     categories=services.get_categories()
     # kafedras = services.get_kafedra()
@@ -44,16 +45,16 @@ def home_page(request):
     return render(request, 'index.html', ctx)
 @login_required_decorator
 def category_list(request):
-    categoriies=services.get_categories()
-    print(categoriies)
+    categories=services.get_categories()
+    print(categories)
     ctx={
-        "faculties":categoriies
+        "categories":categories
     }
     return render(request,'category/list.html',ctx)
 @login_required_decorator
 def category_create(request):
-    model = Ctegory()
-    form = CategoryyForm(request.POST or None, instance=model)
+    model = Category()
+    form = CategoryForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
 
@@ -66,6 +67,11 @@ def category_create(request):
         request.session["category_count"] = category_count
 
         return redirect('category_list')
+    ctx = {
+        "model": model,
+        "form": form
+    }
+    return render(request, 'category/form.html', ctx)
 
 
 

@@ -1,8 +1,8 @@
 from django import forms
 from .models import *
-class CategoryyForm(forms.ModelForm):
+class CategoryForm(forms.ModelForm):
     class Meta:
-        model = Ctegory
+        model = Category
         fields= "__all__"
         widgets = {
         "name":forms.TextInput(attrs={'class':'form-control'}),
