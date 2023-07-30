@@ -17,7 +17,7 @@
                             <h2 class="title-1">Username: {{ request.user.username }}</h2>
 
 
-{#                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'teacher_create' %}">#}
+{#                            <a class="au-btn au-btn-icon au-btn--blue" href="{% url 'category_create' %}">#}
 {#                                <i class="zmdi zmdi-plus"></i>add</a>#}
                         </div>
 
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="text">
                                         <span> >>>> All Count <<<<</span>
-                                        <h2> kafedra = {{ request.session.kafedra_count }}</h2>
+                                        <h2> category = {{ request.session.category_count }}</h2>
                                             <h2> teacher = {{ request.session.teacher_count }}</h2>
                                             <h2> faculty = {{ request.session.faculty_count }}</h2>
                                             <h2> subject = {{ request.session.subject_count }}</h2>

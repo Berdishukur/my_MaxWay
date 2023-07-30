@@ -14,7 +14,8 @@ def login_required_decorator(func):
 def logout_page(request):
     logout(request)
     return redirect("login_page")
-@login_required_decorator
+
+
 def login_page(request):
     if request.POST:
         username=request.POST.get('username')
@@ -23,6 +24,7 @@ def login_page(request):
         if user is not None:
             login(request, user)
             return redirect("home_page")
+
     return render(request, 'login.html')
 @login_required_decorator
 def home_page(request):
@@ -73,6 +75,29 @@ def category_create(request):
     }
     return render(request, 'category/form.html', ctx)
 
+
+@login_required_decorator
+def category_edit(request,pk):
+    model = Category.objects.get(pk=pk)
+    form = CategoryForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You edited category: {request.POST.get('name')}"]
+        request.session["actions"] = actions
+        return redirect('category_list')
+    ctx = {
+        "model":model,
+        "form":form
+    }
+    return render(request,'category/form.html',ctx)
+
+@login_required_decorator
+def category_delete(request,pk):
+    model = Category.objects.get(pk=pk)
+    model.delete()
+    return redirect('category_list')
 
 
 
