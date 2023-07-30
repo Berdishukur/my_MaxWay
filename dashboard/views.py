@@ -25,7 +25,7 @@ def login_page(request):
             login(request, user)
             return redirect("home_page")
 
-    return render(request, 'login.html')
+    return render(request, 'dashboard/login.html')
 @login_required_decorator
 def home_page(request):
     categories=services.get_categories()
@@ -44,7 +44,7 @@ def home_page(request):
             # 'students':len(students)
         }
     }
-    return render(request, 'index.html', ctx)
+    return render(request, 'dashboard/index.html', ctx)
 @login_required_decorator
 def category_list(request):
     categories=services.get_categories()
@@ -52,7 +52,7 @@ def category_list(request):
     ctx={
         "categories":categories
     }
-    return render(request,'category/list.html',ctx)
+    return render(request,'dashboard/category/list.html',ctx)
 @login_required_decorator
 def category_create(request):
     model = Category()
@@ -73,7 +73,7 @@ def category_create(request):
         "model": model,
         "form": form
     }
-    return render(request, 'category/form.html', ctx)
+    return render(request, 'dashboard/category/form.html', ctx)
 
 
 @login_required_decorator
@@ -91,7 +91,7 @@ def category_edit(request,pk):
         "model":model,
         "form":form
     }
-    return render(request,'category/form.html',ctx)
+    return render(request,'dashboard/category/form.html',ctx)
 
 @login_required_decorator
 def category_delete(request,pk):
@@ -107,4 +107,4 @@ def category_delete(request,pk):
 
 @login_required_decorator
 def profile(request):
-    return render(request,'profile.html')
+    return render(request,'dashboard/profile.html')
