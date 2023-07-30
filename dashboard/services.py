@@ -21,3 +21,9 @@ def get_categories():
         cursor.execute("""SELECT * from dashboard_category """)
         category = dictfetchall(cursor)
         return category
+
+def get_product():
+    with closing(connection.cursor()) as cursor:
+        cursor.execute(""" SELECT * from dashboard_product """)
+        product=dictfetchall(cursor)
+        return product

@@ -29,19 +29,11 @@ def login_page(request):
 @login_required_decorator
 def home_page(request):
     categories=services.get_categories()
-    # kafedras = services.get_kafedra()
-    # subjects = services.get_subject()
-    # teachers = services.get_teacher()
-    # groups = services.get_groups()
-    # students = services.get_student()
+    products=services.get_product()
     ctx={
         'counts' : {
             'categories':len(categories),
-            # 'kafedras':len(kafedras),
-            # 'subjects':len(subjects),
-            # 'teachers':len(teachers),
-            # 'groups':len(groups),
-            # 'students':len(students)
+            'products':len(products),
         }
     }
     return render(request, 'dashboard/index.html', ctx)
@@ -98,8 +90,25 @@ def category_delete(request,pk):
     model = Category.objects.get(pk=pk)
     model.delete()
     return redirect('category_list')
-
-
+@login_required_decorator
+def product_list(request):
+    products=services.get_product()
+    ctx={
+        'products':products
+    }
+    return render(request,'dashboard/product/list.html',ctx)
+@login_required_decorator
+def product_create(request):
+    model=Product()
+    form=ProductForm(request.POST or None,instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect("product_lis")
+    ctx={
+        "model":model,
+        "form":form
+    }
+    return render(request,'dashboard/product/form.html',ctx)
 
 
 
