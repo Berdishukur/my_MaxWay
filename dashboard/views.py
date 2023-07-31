@@ -91,6 +91,28 @@ def category_delete(request,pk):
     model.delete()
     return redirect('category_list')
 @login_required_decorator
+def product_delete(request,pk):
+    model = Product.objects.get(pk=pk)
+    model.delete()
+    return redirect('category_list')
+@login_required_decorator
+def product_edit(request,pk):
+    model = Product.objects.get(pk=pk)
+    form = ProductForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+
+        actions = request.session.get('actions', [])
+        actions += [f"You edited product: {request.POST.get('name')}"]
+        request.session["actions"] = actions
+        return redirect('product_list')
+    ctx = {
+        "model":model,
+        "form":form
+    }
+    return render(request,'dashboard/product/form.html',ctx)
+
+@login_required_decorator
 def product_list(request):
     products=services.get_product()
     ctx={

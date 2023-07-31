@@ -27,3 +27,9 @@ def get_product():
         cursor.execute(""" SELECT * from dashboard_product """)
         product=dictfetchall(cursor)
         return product
+
+    # left
+    # join
+    # dashboard_category
+    # on
+    # dashboard_product.category_id = dashboard_category.id
