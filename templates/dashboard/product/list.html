@@ -29,12 +29,12 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Image</th>
                                         <th>Title</th>
-                                        <th>Price</th>
-                                        <th>Category</th>
                                         <th>Descirptions</th>
+                                        <th>Price</th>
                                         <th>Created At</th>
+                                        <th>Category</th>
+                                        <th>Image</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -42,11 +42,12 @@
                                     {% for product in products %}
                                     <tr>
                                         <td>{{ product.id }}</td>
-                                        <td>{{ product.image }}</td>
                                         <td>{{ product.title }}</td>
-                                        <td>{{ product.category }}</td>
                                         <td>{{ product.descriptions }}</td>
+                                        <td>{{ product.price }}</td>
                                         <td>{{ product.created }}</td>
+                                        <td>{{ product.category }}</td>
+                                        <td>{{ product.image }}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a class="item" data-toggle="tooltip" href="#" data-placement="top" title="" data-original-title="Edit">

@@ -30,8 +30,17 @@
                                 <form method="post">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <label class=" form-control-label">Name</label>
-                                        {{ form.name }}
+                                        <label class=" form-control-label">Title</label>
+                                        {{ form.title }}
+                                        <label class=" form-control-label">Descirptions</label>
+                                        {{ form.descriptions }}
+                                        <label class=" form-control-label">Price</label>
+                                        {{ form.price }}
+                                        <label class=" form-control-label">Category</label>
+                                        {{ form.category }}
+                                        <label class=" form-control-label">Image</label>
+                                        {{ form.image }}
+
                                     </div>
 
                                     {% if model %}

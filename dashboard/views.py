@@ -103,7 +103,16 @@ def product_create(request):
     form=ProductForm(request.POST or None,instance=model)
     if request.POST and form.is_valid():
         form.save()
-        return redirect("product_lis")
+
+        actions = request.session.get('actions', [])
+        actions += [f"You created product: {request.POST.get('name')}"]
+        request.session["actions"] = actions
+
+        product_count = request.session.get('product_count', 0)
+        product_count += 1
+        request.session["product_count"] = product_count
+
+        return redirect('product_list')
     ctx={
         "model":model,
         "form":form

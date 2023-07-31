@@ -13,9 +13,11 @@ class ProductForm(forms.ModelForm):
         model=Product
         fields="__all__"
         widgets={
-            # "image":forms.(attrs={'class':'form-control'}),
             "title":forms.TextInput(attrs={'class':'form-control'}),
             "descriptions":forms.TextInput(attrs={'class':'form-control'}),
-            "created":forms.TextInput(attrs={'class':'form-control'}),
+            "price": forms.NumberInput(attrs={'class': 'form-control'}),
             "category":forms.Select(attrs={'class':'form-control'}),
+            "image": forms.FileInput(attrs={'class': 'form-control'}),
+
+
         }
