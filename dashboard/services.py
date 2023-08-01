@@ -24,12 +24,10 @@ def get_categories():
 
 def get_product():
     with closing(connection.cursor()) as cursor:
-        cursor.execute(""" SELECT * from dashboard_product """)
+        cursor.execute(""" SELECT dashboard_product.id, dashboard_product.title, dashboard_product.descriptions, 
+        dashboard_product.price, 
+        dashboard_product.created, 
+        dashboard_category.name as category_name, dashboard_product.image as image  from dashboard_product
+        left join dashboard_category on dashboard_product.category_id = dashboard_category.id""")
         product=dictfetchall(cursor)
         return product
-
-    # left
-    # join
-    # dashboard_category
-    # on
-    # dashboard_product.category_id = dashboard_category.id

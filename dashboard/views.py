@@ -15,7 +15,7 @@ def logout_page(request):
     logout(request)
     return redirect("login_page")
 
-
+login_required_decorator
 def login_page(request):
     if request.POST:
         username=request.POST.get('username')
