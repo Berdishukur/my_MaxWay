@@ -38,8 +38,8 @@
                                     {% for category in categories %}
                                     <tr>
                                         <td>{{ category.id }}</td>
-                                        <td>{{ category.name }}</td>
-                                        <td>{{ category.created }}</td>
+                                        <td>{{ category.title }}</td>
+                                        <td>{{ category.created_at }}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a class="item" data-toggle="tooltip" href="{% url 'category_edit' pk=category.id %}" data-placement="top" title="" data-original-title="Edit">
