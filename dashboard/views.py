@@ -6,7 +6,6 @@ from django.shortcuts import redirect
 from . import forms
 from . import services
 
-
 def login_required_decarator(func):
     return login_required(func, login_url='login_page')
 
@@ -174,6 +173,7 @@ def product_create(request):
 def product_edit(request,pk):
     model = Product.objects.get(pk=pk)
     form = forms.ProductForm(request.POST or None,request.FILES or None, instance=model)
+
     if request.POST and form.is_valid():
         form.save()
         return redirect('product_list')

@@ -17,6 +17,7 @@ class ProductForm(forms.ModelForm):
         widgets = {
             "title": forms.TextInput(attrs={'class': 'form-control'}),
             "description": forms.TextInput(attrs={'class': 'form-control'}),
+            "cost": forms.TextInput(attrs={'class': 'form-control'}),
             "price": forms.TextInput(attrs={'class': 'form-control'}),
             "category": forms.Select(attrs={'class': 'form-control'}),
             "image": forms.FileInput(attrs={
@@ -34,5 +35,3 @@ class UserForm(forms.ModelForm):
         "last_name": forms.TextInput(attrs={'class': 'form-control'}),
         "phone_number": forms.TextInput(attrs={'class': 'form-control'}),
     }
-
-
