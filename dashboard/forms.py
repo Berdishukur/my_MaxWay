@@ -34,3 +34,5 @@ class UserForm(forms.ModelForm):
         "last_name": forms.TextInput(attrs={'class': 'form-control'}),
         "phone_number": forms.TextInput(attrs={'class': 'form-control'}),
     }
+
+

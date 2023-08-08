@@ -13,7 +13,6 @@ class Product(models.Model):
     title = models.CharField(null=False, blank=False, max_length=100)
     description = models.TextField(null=False, blank=False)
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
-    cost = models.IntegerField(null=False, blank=False)
     price = models.IntegerField(null=False, blank=False)
     image = models.ImageField(upload_to='products')
     created_at = models.DateTimeField(auto_now_add=True)
