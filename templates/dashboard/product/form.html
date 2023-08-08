@@ -30,17 +30,20 @@
                                 <form method="post" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <label class=" form-control-label">Title</label>
-                                        {{ form.title }}
-                                        <label class=" form-control-label"> Descriptions</label>
-                                        {{ form.description }}
-                                        <label class=" form-control-label">Price</label>
-                                        {{ form.price }}
-                                        <label class=" form-control-label">Category</label>
-                                        {{ form.category }}
+                                        <label class=" form-control-label">Name</label>
+                                        {{form.title}}
+                                        <label  class=" form-control-label">Description</label>
+                                        {{form.description}}
+                                        <label  class=" form-control-label">Category</label>
+                                        {{form.category}}
+                                        <label  class=" form-control-label">Price</label>
+                                        {{form.price}}
+                                        <label  class=" form-control-label">Cost</label>
+                                        {{form.cost}}
                                         <label  class=" form-control-label">Image</label>
                                         {{form.image}}
                                     </div>
+
                                     {% if model %}
                                     <button type="submit" class="btn btn-warning btn-md">Save</button>
                                     {% else %}
